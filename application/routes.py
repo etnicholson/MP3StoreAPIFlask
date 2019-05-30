@@ -18,3 +18,11 @@ class GetAndPost(Resource):
         mp3.save()
         return jsonify(mp3)
 
+
+
+@api.route('/api/<objectid:oid>')
+class GetUpdateDelete(Resource):
+
+    #GET ONE
+    def get(self,oid):
+        return jsonify(Mp3.objects(id=oid))
