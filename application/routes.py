@@ -26,3 +26,16 @@ class GetUpdateDelete(Resource):
     #GET ONE
     def get(self,oid):
         return jsonify(Mp3.objects(id=oid))
+
+
+    #DELETE
+    def delete(self,oid):
+        Mp3.objects(id=oid).delete()
+        return jsonify('mp3 was deleted')
+
+    #PUT
+    def put(self,oid):
+        data= api.payload
+        Mp3.objects(id=oid).update(**data)
+
+        return jsonify(Mp3.objects(id=oid))
